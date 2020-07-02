@@ -4,7 +4,7 @@
 
 import React from 'react';
 
-import Timestamp from './Timestamp';
+import Timestamp from '../Timestamp';
 
 const App = () => {
   return (
