@@ -2,18 +2,24 @@
  * @file App component.
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 
-import Timestamp from '../Timestamp';
+export class App extends Component {
+  constructor() {
+    super()
+    this.state = {};
+    username: "",
+    email: "",
+    projects:[],
+    teammates: [],
+    isLoading: true,
+    networkMessage: '',
+    error: ''
 
-const App = () => {
-  return (
-    <div>
-      <h1>Hello World!</h1>
+  }
 
-      <Timestamp />
-    </div>
-  );
-};
-
+  render() {
+    return <h1>Hello World</h1>;
+  }
+}
 export default App;
