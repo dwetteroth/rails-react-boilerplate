@@ -17,7 +17,6 @@ export class App extends Component {
     error: ''
   };
 
-  }
 
   render() {
     return <h1>Hello World</h1>;
