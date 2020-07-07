@@ -3,9 +3,9 @@
  */
 
 import React from 'react';
-import App.js from 'App';
+// import App.js from 'App';
 
-const ProjectSelector = (props) => {
+const ProjectSelector = () => {
   return (
     <div>
       <h4>Welcome ${username}</h4>

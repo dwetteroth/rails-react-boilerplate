@@ -4,7 +4,7 @@
 
 import React from 'react';
 
-const Login = (props) => {
+const Login = () => {
   return (
     <div>
       <h1>IDB</h1>
