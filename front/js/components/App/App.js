@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 export class App extends Component {
   constructor() {
     super()
-    this.state = {};
+    this.state = {
     username: "",
     email: "",
     projects:[],
@@ -15,6 +15,7 @@ export class App extends Component {
     isLoading: true,
     networkMessage: '',
     error: ''
+  };
 
   }
 
