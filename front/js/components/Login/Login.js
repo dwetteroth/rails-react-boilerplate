@@ -23,7 +23,15 @@ export default class Login extends Component {
   clearInputs = () => {
     this.setState({username: "", email: ""})
   }
-  
+
+  determineEnabled = () => {
+    if(this.state.username === "" || this.state.email === "") {
+        return true
+    } else {
+        return false
+    }
+  }
+
   render() {
     return (
         <fieldset>
