@@ -41,7 +41,5 @@ export default class Login extends Component {
             <Link to='/home'><button disabled={this.determineEnabled()} onClick={this.handleChange}>submit</button></Link>
         </fieldset>
     )
-}
+  }
 };
-
-export default Login;
