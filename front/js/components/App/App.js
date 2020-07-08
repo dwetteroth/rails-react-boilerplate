@@ -10,7 +10,7 @@ import Settings from '../Settings/Settings';
 import Dashboard from '../Dashboard/Dashboard';
 import FlowDetails from '../FlowDetails/FlowDetails';
 
-export class App extends Component {
+export default class App extends Component {
   constructor() {
     super()
     this.state = {
@@ -41,5 +41,3 @@ export class App extends Component {
     )
   }
 }
-
-export default App;
