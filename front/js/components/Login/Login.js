@@ -14,6 +14,11 @@ export default class Login extends Component {
       email: ''
     }
   }
+
+  handleChange = (e) => {
+    this.setState({[e.target.name]: e.target.value});
+    this.props.loginUser(this.state.username, this.state.email)
+}
   render() {
     return (
         <fieldset>
