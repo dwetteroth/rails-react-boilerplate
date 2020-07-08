@@ -10,7 +10,7 @@ import ReactDom from 'react-dom';
 // Include the main scss file for webpack processing.
 import '../css/app.scss';
 
-import App from './components/App';
+import App from './components/App/App';
 import getLogger from './utils/logger';
 
 const log = getLogger('App');
