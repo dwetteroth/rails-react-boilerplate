@@ -4,6 +4,11 @@
 
 import React, { Component } from 'react';
 import Route from 'react-router-dom';
+import Login from '../Login/Login';
+import Main from '../Main/Main';
+import Settings from '../Settings/Settings';
+import Dashboard from '../Dashboard/Dashboard';
+import FlowDetails from '../FlowDetails/FlowDetails';
 
 export class App extends Component {
   constructor() {
