@@ -24,6 +24,11 @@ export class App extends Component {
     }
   }
 
+  loginUser = (username, email) => {
+    this.setState( { username })
+    this.setState( { email } )
+  }
+
   render() {
     return (
       <section>
