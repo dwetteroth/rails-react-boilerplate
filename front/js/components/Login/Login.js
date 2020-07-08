@@ -18,7 +18,12 @@ export default class Login extends Component {
   handleChange = (e) => {
     this.setState({[e.target.name]: e.target.value});
     this.props.loginUser(this.state.username, this.state.email)
-}
+    }
+
+  clearInputs = () => {
+    this.setState({username: "", email: ""})
+  }
+  
   render() {
     return (
         <fieldset>
