@@ -4,11 +4,12 @@
 
 import React from 'react';
 
-const Main = () => {
+const Main = (props) => {
   return (
-    <div>
-      <h1>I am the Main</h1>
-    </div>
+    <main>
+      <h1>This is the Main</h1>
+      <p>Welcome, {props.username}</p>
+    </main>
   );
 };
 
