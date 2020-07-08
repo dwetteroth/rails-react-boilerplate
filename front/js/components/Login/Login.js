@@ -1,10 +1,19 @@
 /**
- * @file App component.
+ * @file Login component.
  */
 
-import React from 'react';
+import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 
-const Login = () => {
+
+export default class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: '',
+      email: ''
+    }
+  }
   return (
     <div>
       <h1>IDB</h1>
