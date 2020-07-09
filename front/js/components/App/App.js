@@ -10,7 +10,6 @@ import Settings from '../Settings/Settings';
 import Dashboard from '../Dashboard/Dashboard';
 import FlowDetails from '../FlowDetails/FlowDetails';
 import ProjectDropDown from '../ProjectDropDown/ProjectDropDown';
-import Nav from '../Nav/Nav';
 
 export default class App extends Component {
   constructor() {
@@ -42,8 +41,11 @@ export default class App extends Component {
     const { logoutUser } = this.logoutUser;
     return (
       <section>
-        <Nav logoutUser={logoutUser} />
-        <Route exact path="/" render={() => <Login loginUser={loginUser} />} />
+        <Route
+          exact
+          path="/"
+          render={() => <Login logoutUser={logoutUser} loginUser={loginUser} />}
+        />
         <Route path="/home" component={() => <Main username={username} />} />
         <Route
           path="/settings"
