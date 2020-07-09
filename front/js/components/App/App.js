@@ -12,32 +12,53 @@ import FlowDetails from '../FlowDetails/FlowDetails';
 
 export default class App extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
-      username: "",
-      email: "",
-      projects:[],
+      username: '',
+      email: '',
+      projects: [],
       teammates: [],
       isLoading: true,
       networkMessage: '',
-      error: ''
-    }
+      error: '',
+    };
   }
 
   loginUser = (username, email) => {
-    this.setState( { username })
-    this.setState( { email } )
-  }
+    this.setState({ username });
+    this.setState({ email });
+  };
 
   render() {
+    const { username } = this.state;
+    const { projects } = this.state;
+    const { email } = this.state;
+    const { teammates } = this.state;
+    const { loginUser } = this.loginUser;
     return (
       <section>
-      <Route exact path='/' render={() => <Login loginUser={this.loginUser}/>}/>
-      <Route path='/home' component={() => <Main username={this.state.username}/>}/>
-      <Route path='/settings' component={() => <Settings username={this.state.username} email={this.state.email} teammates={this.state.teammates} projects={this.state.projects}/>}/>
-      <Route path='/project/:id' component={() => <Dashboard projectInfo={this.state.projects}/>}/>
-      <Route path='/project/:id/detail/:id' component={() => <FlowDetails/>}/>
-    </section>
-    )
+        <Route exact path="/" render={() => <Login loginUser={loginUser} />} />
+        <Route path="/home" component={() => <Main username={username} />} />
+        <Route
+          path="/settings"
+          component={() => (
+            <Settings
+              username={username}
+              email={email}
+              teammates={teammates}
+              projectInfo={projects}
+            />
+          )}
+        />
+        <Route
+          path="/project/:id"
+          component={() => <Dashboard projectInfo={projects} />}
+        />
+        <Route
+          path="/project/:id/detail/:id"
+          component={() => <FlowDetails />}
+        />
+      </section>
+    );
   }
 }

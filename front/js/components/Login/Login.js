@@ -3,43 +3,67 @@
  */
 
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
-
+import { Link } from 'react-router-dom';
 
 export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
       username: '',
-      email: ''
-    }
+      email: '',
+    };
   }
 
   handleChange = (e) => {
-    this.setState({[e.target.name]: e.target.value});
-    this.props.loginUser(this.state.username, this.state.email)
-    }
+    const { username } = this.state;
+    const { email } = this.state;
+    const {loginUser} = this.props;
+    this.setState({ [e.target.name]: e.target.value });
+    loginUser(username, email);
+  };
 
   clearInputs = () => {
-    this.setState({username: "", email: ""})
-  }
+    this.setState({ username: '', email: '' });
+  };
 
   determineEnabled = () => {
-    if(this.state.username === "" || this.state.email === "") {
-        return true
-    } else {
-        return false
-    }
-  }
+    const { username } = this.state;
+    const { email } = this.state;
+    if (username === '' || email === '') {
+      return true;
+    } 
+  };
 
   render() {
+    const { username } = this.state;
+    const { email } = this.state;
     return (
-        <fieldset>
-            <h1>IDB</h1>
-            <input onChange={this.handleChange} value={this.state.username} name="username" type="text" placeholder="name" />
-            <input onChange={this.handleChange} value={this.state.email} name="email" type="text" placeholder="email" />
-            <Link to='/home'><button disabled={this.determineEnabled()} onClick={this.handleChange}>submit</button></Link>
-        </fieldset>
-    )
+      <fieldset>
+        <h1>IDB</h1>
+        <input
+          onChange={this.handleChange}
+          value={username}
+          name="username"
+          type="text"
+          placeholder="name"
+        />
+        <input
+          onChange={this.handleChange}
+          value={email}
+          name="email"
+          type="text"
+          placeholder="email"
+        />
+        <Link to="/home">
+          <button
+            type="submit"
+            disabled={this.determineEnabled()}
+            onClick={this.handleChange}
+          >
+            submit
+          </button>
+        </Link>
+      </fieldset>
+    );
   }
-};
+}
