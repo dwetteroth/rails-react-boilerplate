@@ -1,14 +1,17 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
-const Nav = () => {
+const Nav = (props) => {
+  const { logoutUser } = props;
   return (
     <nav>
-      <Link to='/dashboard'>home</Link>
+      <Link to="/dashboard">home</Link>
       <span>
-        <NavLink to='/projects'> projects </NavLink>
-        <NavLink to='/settings'> settings </NavLink>
-        <NavLink to='/'> logout </NavLink>
+        <NavLink to="/projects"> projects </NavLink>
+        <NavLink to="/settings"> settings </NavLink>
+        <NavLink to="/" onClick={logoutUser}>
+          logout
+        </NavLink>
       </span>
     </nav>
   );

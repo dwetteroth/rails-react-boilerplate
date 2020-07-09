@@ -10,7 +10,7 @@ import Settings from '../Settings/Settings';
 import Dashboard from '../Dashboard/Dashboard';
 import FlowDetails from '../FlowDetails/FlowDetails';
 import ProjectDropDown from '../ProjectDropDown/ProjectDropDown';
-import Nav from '../Nav/Nav'
+import Nav from '../Nav/Nav';
 
 export default class App extends Component {
   constructor() {
@@ -20,9 +20,6 @@ export default class App extends Component {
       email: '',
       projects: [],
       teammates: [],
-      isLoading: true,
-      networkMessage: '',
-      error: '',
     };
   }
 
@@ -31,20 +28,23 @@ export default class App extends Component {
     this.setState({ email });
   };
 
+  logoutUser = () => {
+    this.setState({ username: '' });
+    this.setState({ email: '' });
+  };
+
   render() {
     const { username } = this.state;
     const { projects } = this.state;
     const { email } = this.state;
     const { teammates } = this.state;
     const { loginUser } = this.loginUser;
+    const { logoutUser } = this.logoutUser;
     return (
       <section>
-        <Nav />
+        <Nav logoutUser={logoutUser} />
         <Route exact path="/" render={() => <Login loginUser={loginUser} />} />
-        <Route 
-          path="/home"
-          component={() => <Main username={username} />}
-        />
+        <Route path="/home" component={() => <Main username={username} />} />
         <Route
           path="/settings"
           component={() => (
@@ -64,10 +64,7 @@ export default class App extends Component {
           path="/dashboard/:id/detail/:id"
           component={() => <FlowDetails />}
         />
-        <Route
-          path="/projects"
-          component={() => <ProjectDropDown />}
-        />
+        <Route path="/projects" component={() => <ProjectDropDown />} />
       </section>
     );
   }
