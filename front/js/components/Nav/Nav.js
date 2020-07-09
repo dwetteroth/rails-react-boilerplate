@@ -4,7 +4,7 @@ import { NavLink, Link } from 'react-router-dom';
 const Nav = () => {
   return (
     <nav>
-      <h1>IDB</h1>
+      <Link to='/dashboard'>home</Link>
       <span>
         <NavLink to='/projects'> projects </NavLink>
         <NavLink to='/settings'> settings </NavLink>
