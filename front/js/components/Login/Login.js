@@ -6,8 +6,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 export default class Login extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       username: '',
       email: '',
@@ -15,18 +15,12 @@ export default class Login extends Component {
   }
 
   handleChange = (e) => {
-    const { username } = this.state;
-    const { email } = this.state;
+    e.preventDefault()
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleSubmit = (e) => {
-    const { loginUser } = this.props;
-    const { fetchProjects } = this.props;
-    const { username } = this.state;
-    const { email } = this.state;
-    loginUser(username, email);
-    fetchProjects();
+  handleSubmit = () => {
+    this.props.loginUser(this.state.username, this.state.email);
   };
 
   clearInputs = () => {

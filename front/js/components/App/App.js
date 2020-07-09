@@ -3,7 +3,7 @@
  */
 
 import React, { Component } from 'react';
-import Route from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import Login from '../Login/Login';
 import Main from '../Main/Main';
 import Settings from '../Settings/Settings';
@@ -18,7 +18,7 @@ export default class App extends Component {
     this.state = {
       username: '',
       email: '',
-      projects: {},
+      projectInfo: {},
       teammates: [],
     };
   }
@@ -26,11 +26,12 @@ export default class App extends Component {
   loginUser = (username, email) => {
     this.setState({ username });
     this.setState({ email });
+    this.fetchProjects();
   };
 
-  clearProject = () => {
-    this.setState({ project: {} })
-  }
+  fetchProjects = () => {
+    this.setState({ projectInfo: projects });
+  };
 
   logoutUser = () => {
     this.setState({ username: '' });
@@ -38,30 +39,22 @@ export default class App extends Component {
     this.clearProjects();
   };
 
-  fetchProjects = () => {
-    this.setState({ projects });
+  clearProject = () => {
+    this.setState({ projectInfo: {} });
   };
 
   render() {
     const { username } = this.state;
-    const { projects } = this.state;
+    const { projectInfo } = this.state;
     const { email } = this.state;
     const { teammates } = this.state;
-    const { loginUser } = this.loginUser;
-    const { logoutUser } = this.logoutUser;
-    const { fetchProjects } = this.fetchProjects;
     return (
       <section>
         <Route
           exact
           path="/"
-          render={() => (
-            <Login
-              fetchProjects={fetchProjects}
-              logoutUser={logoutUser}
-              loginUser={loginUser}
-            />
-          )}
+          render={() => 
+          <Login loginUser={this.loginUser}/>}
         />
         <Route path="/home" component={() => <Main username={username} />} />
         <Route
@@ -71,13 +64,13 @@ export default class App extends Component {
               username={username}
               email={email}
               teammates={teammates}
-              projectInfo={projects}
+              projectInfo={projectInfo}
             />
           )}
         />
         <Route
           path="/dashboard/:id"
-          component={() => <Dashboard projectInfo={projects} />}
+          component={() => <Dashboard projectInfo={projectInfo} />}
         />
         <Route
           path="/dashboard/:id/detail/:id"

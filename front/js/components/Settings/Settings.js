@@ -4,7 +4,7 @@
 
 import React from 'react';
 
-const Settings = () => {
+const Settings = (props) => {
   return (
     <div>
       <img alt="x-out button" />
