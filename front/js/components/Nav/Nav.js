@@ -1,18 +1,17 @@
-
-
 import React from 'react';
+import { NavLink, Link } from 'react-router-dom';
 
-const Nav = () => { 
-    return (
-    <Nav>
-    <img>IDB Logo</img>
-    <span>
-        <h3>projects</h3>
-        <h3>settings</h3>
-        <h3>logout</h3>
-    </span>
-    </Nav>
-    );
+const Nav = () => {
+  return (
+    <nav>
+      <h1>IDB</h1>
+      <span>
+        <NavLink to='/projects'> projects </NavLink>
+        <NavLink to='/settings'> settings </NavLink>
+        <NavLink to='/'> logout </NavLink>
+      </span>
+    </nav>
+  );
 };
 
-export default Nav 
+export default Nav;

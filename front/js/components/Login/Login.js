@@ -17,7 +17,7 @@ export default class Login extends Component {
   handleChange = (e) => {
     const { username } = this.state;
     const { email } = this.state;
-    const {loginUser} = this.props;
+    const { loginUser } = this.props;
     this.setState({ [e.target.name]: e.target.value });
     loginUser(username, email);
   };
@@ -31,7 +31,9 @@ export default class Login extends Component {
     const { email } = this.state;
     if (username === '' || email === '') {
       return true;
-    } 
+    } else {
+      return false;
+    }
   };
 
   render() {

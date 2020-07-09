@@ -9,6 +9,8 @@ import Main from '../Main/Main';
 import Settings from '../Settings/Settings';
 import Dashboard from '../Dashboard/Dashboard';
 import FlowDetails from '../FlowDetails/FlowDetails';
+import ProjectDropDown from '../ProjectDropDown/ProjectDropDown';
+import Nav from '../Nav/Nav'
 
 export default class App extends Component {
   constructor() {
@@ -37,8 +39,12 @@ export default class App extends Component {
     const { loginUser } = this.loginUser;
     return (
       <section>
+        <Nav />
         <Route exact path="/" render={() => <Login loginUser={loginUser} />} />
-        <Route path="/home" component={() => <Main username={username} />} />
+        <Route 
+          path="/home"
+          component={() => <Main username={username} />}
+        />
         <Route
           path="/settings"
           component={() => (
@@ -51,12 +57,16 @@ export default class App extends Component {
           )}
         />
         <Route
-          path="/project/:id"
+          path="/dashboard/:id"
           component={() => <Dashboard projectInfo={projects} />}
         />
         <Route
-          path="/project/:id/detail/:id"
+          path="/dashboard/:id/detail/:id"
           component={() => <FlowDetails />}
+        />
+        <Route
+          path="/projects"
+          component={() => <ProjectDropDown />}
         />
       </section>
     );
