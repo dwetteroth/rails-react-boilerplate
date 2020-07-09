@@ -10,6 +10,7 @@ import Settings from '../Settings/Settings';
 import Dashboard from '../Dashboard/Dashboard';
 import FlowDetails from '../FlowDetails/FlowDetails';
 import ProjectDropDown from '../ProjectDropDown/ProjectDropDown';
+import projects from '../Data';
 
 export default class App extends Component {
   constructor() {
@@ -17,7 +18,7 @@ export default class App extends Component {
     this.state = {
       username: '',
       email: '',
-      projects: [],
+      projects: {},
       teammates: [],
     };
   }
@@ -27,9 +28,18 @@ export default class App extends Component {
     this.setState({ email });
   };
 
+  clearProject = () => {
+    this.setState({ project: {} })
+  }
+
   logoutUser = () => {
     this.setState({ username: '' });
     this.setState({ email: '' });
+    this.clearProjects();
+  };
+
+  fetchProjects = () => {
+    this.setState({ projects });
   };
 
   render() {
@@ -39,12 +49,19 @@ export default class App extends Component {
     const { teammates } = this.state;
     const { loginUser } = this.loginUser;
     const { logoutUser } = this.logoutUser;
+    const { fetchProjects } = this.fetchProjects;
     return (
       <section>
         <Route
           exact
           path="/"
-          render={() => <Login logoutUser={logoutUser} loginUser={loginUser} />}
+          render={() => (
+            <Login
+              fetchProjects={fetchProjects}
+              logoutUser={logoutUser}
+              loginUser={loginUser}
+            />
+          )}
         />
         <Route path="/home" component={() => <Main username={username} />} />
         <Route
