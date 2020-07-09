@@ -20,10 +20,10 @@ default: &default
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  password: Na%j_GU%5<6B3OqowixBvPgNO!P8v)>*
-  url: ls-42e75c6943b46c1d4d04979102800dbc147a645d.cue6isllb1ou.us-east-1.rds.amazonaws.com
-  username: dbmasteruser
-  port: 5432
+  # password: Na%j_GU%5<6B3OqowixBvPgNO!P8v)>*
+  # url: ls-42e75c6943b46c1d4d04979102800dbc147a645d.cue6isllb1ou.us-east-1.rds.amazonaws.com
+  # username: dbmasteruser
+  # port: 5432
 
 development:
   <<: *default
