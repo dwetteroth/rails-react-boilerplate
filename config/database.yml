@@ -20,19 +20,26 @@ default: &default
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  password: Na%j_GU%5<6B3OqowixBvPgNO!P8v)>*
+  url: ls-42e75c6943b46c1d4d04979102800dbc147a645d.cue6isllb1ou.us-east-1.rds.amazonaws.com
+  username: dbmasteruser
+  port: 5432
 
 development:
   <<: *default
   database: rails-react-bp-dev
 
+
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  #username: rails-react-boilerplate
+  # username: rails-react-boilerplate
+
 
   # The password associated with the postgres role (username).
   #password:
+
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -51,6 +58,7 @@ development:
   #   log, notice, warning, error, fatal, and panic
   # Defaults to warning.
   #min_messages: notice
+
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
