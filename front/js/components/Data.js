@@ -1,7 +1,7 @@
 const projects = {
   projects: [
     {
-      project1: [
+      AppDeliveryTeam: [
         {
           type: 'feature',
           title: 'feature #8',
@@ -55,7 +55,7 @@ const projects = {
       ],
     },
     {
-      project2: [
+      LabOps: [
         {
           type: 'feature',
           title: 'feature #81',
