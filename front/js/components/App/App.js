@@ -46,12 +46,14 @@ export default class App extends Component {
   };
 
   toggleSettings = () => {
-    this.setState({settingsSelected: !this.state.settingsSelected});
+    this.setState({ settingsSelected: !this.state.settingsSelected });
   };
 
   openProjectDropDown = () => {
-    this.setState({clickedProjectDropDown: !this.state.clickedProjectDropDown});
-  }
+    this.setState({
+      clickedProjectDropDown: !this.state.clickedProjectDropDown,
+    });
+  };
 
   render() {
     return (
@@ -63,10 +65,10 @@ export default class App extends Component {
             this.state.userLoggedIn === false ? (
               <Login loginUser={this.loginUser} />
             ) : (
-              <Main 
+              <Main
                 settingsSelected={this.state.settingsSelected}
                 toggleSettings={this.toggleSettings}
-                logoutUser={this.logoutUser} 
+                logoutUser={this.logoutUser}
                 clickedProjectDropDown={this.state.clickedProjectDropDown}
                 openProjectDropDown={this.openProjectDropDown}
               />

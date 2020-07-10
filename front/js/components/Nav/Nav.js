@@ -11,7 +11,9 @@ const Nav = (props) => {
       <span>
         <button onClick={openProjectDropDown}>projects</button>
         <button onClick={toggleSettings}> settings </button>
-        <NavLink to="/" onClick={logoutUser}>logout</NavLink>
+        <NavLink to="/" onClick={logoutUser}>
+          logout
+        </NavLink>
       </span>
     </nav>
   );
