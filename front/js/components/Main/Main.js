@@ -9,6 +9,7 @@ import ProjectSelector from '../ProjectSelector/ProjectSelector';
 import ProjectDropDown from '../ProjectDropDown/ProjectDropDown';
 
 const Main = (props) => {
+  const { projectInfo } = props;
   const { settingsSelected } = props;
   const { username } = props;
   const { logoutUser } = props;
@@ -24,7 +25,7 @@ const Main = (props) => {
         openProjectDropDown={openProjectDropDown}
       />
       <section>
-        <ProjectSelector username={username} />
+        <ProjectSelector username={username} projectInfo={projectInfo}/>
         {settingsSelected ? <Settings /> : null}
         {clickedProjectDropDown ? <ProjectDropDown /> : null}
       </section>

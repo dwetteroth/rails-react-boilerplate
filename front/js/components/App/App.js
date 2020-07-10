@@ -66,6 +66,8 @@ export default class App extends Component {
               <Login loginUser={this.loginUser} />
             ) : (
               <Main
+                username={this.state.username}
+                projectInfo={this.state.projectInfo}
                 settingsSelected={this.state.settingsSelected}
                 toggleSettings={this.toggleSettings}
                 logoutUser={this.logoutUser}
