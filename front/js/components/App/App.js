@@ -8,6 +8,7 @@ import Login from '../Login/Login';
 import Main from '../Main/Main';
 import projects from '../Data';
 
+
 export default class App extends Component {
   constructor() {
     super();
@@ -18,12 +19,12 @@ export default class App extends Component {
       teammates: [],
       userLoggedIn: false,
       settingsSelected: false,
-      projectSelection: '',
+      projectSelection: false,
       clickedProjectDropDown: false,
     };
   }
 
-  loginUser = (username, email) => {
+  loginUser = (username, email) => {  
     this.setState({ username });
     this.setState({ email });
     this.setState({ userLoggedIn: true });
@@ -49,6 +50,10 @@ export default class App extends Component {
     this.setState({ settingsSelected: !this.state.settingsSelected });
   };
 
+  selectProject = (projectNum) => {
+    this.setState({ projectSelection: projectNum})
+  }
+
   openProjectDropDown = () => {
     this.setState({
       clickedProjectDropDown: !this.state.clickedProjectDropDown,
@@ -56,7 +61,7 @@ export default class App extends Component {
   };
 
   render() {
-    return (
+   return (
       <main>
         <Route
           exact
@@ -66,6 +71,7 @@ export default class App extends Component {
               <Login loginUser={this.loginUser} />
             ) : (
               <Main
+                projectSelection={this.state.projectSelection}
                 username={this.state.username}
                 projectInfo={this.state.projectInfo}
                 settingsSelected={this.state.settingsSelected}
@@ -73,6 +79,7 @@ export default class App extends Component {
                 logoutUser={this.logoutUser}
                 clickedProjectDropDown={this.state.clickedProjectDropDown}
                 openProjectDropDown={this.openProjectDropDown}
+                selectProject={this.selectProject}
               />
             )
           }

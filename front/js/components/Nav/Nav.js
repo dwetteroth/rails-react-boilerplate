@@ -7,7 +7,7 @@ const Nav = (props) => {
   const { openProjectDropDown } = props;
   return (
     <nav>
-      <Link to="/dashboard">home</Link>
+      <Link to="/">home</Link>
       <span>
         <button onClick={openProjectDropDown}>projects</button>
         <button onClick={toggleSettings}> settings </button>

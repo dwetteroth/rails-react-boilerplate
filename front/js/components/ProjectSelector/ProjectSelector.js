@@ -10,7 +10,7 @@ class ProjectSelector extends Component {
     super(props)
     this.state = {
       project1name: this.getName(0),
-      project2: this.getName(1),
+      project2name: this.getName(1),
       project1data: this.getData(0),
       project2data: this.getData(1)
     }
@@ -18,7 +18,6 @@ class ProjectSelector extends Component {
 
   getName = (num) => {
     return Object.keys(this.props.projectInfo.projects[num])
-
   }
 
   getData = (num) => {
@@ -26,13 +25,14 @@ class ProjectSelector extends Component {
   }
 
 
+
   render () {
     return (
       <div>
         <h4>Welcome, {this.props.username}! </h4>
         <p>please select a project to visualize its data</p>
-        <button data={this.state.project1data} >{this.state.project1name}</button>
-        <button data={this.state.project2data} >{this.state.project2name}</button>
+        <button onClick={() => this.props.selectProject(1)} data={this.state.project1data} >{this.state.project1name}</button>
+        <button onClick={() => this.props.selectProject(2)} data={this.state.project2data} >{this.state.project2name}</button>
       </div>
     );
   }
