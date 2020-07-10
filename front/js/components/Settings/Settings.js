@@ -10,13 +10,13 @@ const Settings = (props) => {
       <img alt="x-out button" />
       <h2>Settings</h2>
       <h3>Projects:</h3>
-      <p>${projectNames}</p>
+      <p>NEED</p>
       <h3>Team Members:</h3>
-      <p>${teamMemberNames}</p>
+      <p>NEED</p>
       <h3>Username:</h3>
-      <p>${username}</p>
+      <p>NEED</p>
       <h3>Email Address:</h3>
-      <p>${emailAddress}</p>
+      <p>NEED</p>
     </div>
   );
 };

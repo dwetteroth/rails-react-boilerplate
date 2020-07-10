@@ -9,9 +9,7 @@ const Nav = (props) => {
       <span>
         <NavLink to="/projects"> projects </NavLink>
         <NavLink to="/settings"> settings </NavLink>
-        <NavLink to="/" onClick={logoutUser}>
-          logout
-        </NavLink>
+        <NavLink to="/" onClick={logoutUser}>logout</NavLink>
       </span>
     </nav>
   );

@@ -15,7 +15,7 @@ export default class Login extends Component {
   }
 
   handleChange = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     this.setState({ [e.target.name]: e.target.value });
   };
 
@@ -57,7 +57,7 @@ export default class Login extends Component {
           type="text"
           placeholder="email"
         />
-        <Link to="/home">
+        <Link to="/">
           <button
             type="submit"
             disabled={this.determineEnabled()}

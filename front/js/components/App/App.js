@@ -12,6 +12,8 @@ import FlowDetails from '../FlowDetails/FlowDetails';
 import ProjectDropDown from '../ProjectDropDown/ProjectDropDown';
 import projects from '../Data';
 
+
+
 export default class App extends Component {
   constructor() {
     super();
@@ -20,12 +22,14 @@ export default class App extends Component {
       email: '',
       projectInfo: {},
       teammates: [],
+      userLoggedIn: false
     };
   }
 
   loginUser = (username, email) => {
     this.setState({ username });
     this.setState({ email });
+    this.setState({userLoggedIn: true});
     this.fetchProjects();
   };
 
@@ -34,9 +38,11 @@ export default class App extends Component {
   };
 
   logoutUser = () => {
+    console.log('in dere')
     this.setState({ username: '' });
     this.setState({ email: '' });
-    this.clearProjects();
+    this.setState({ userLoggedIn: false});
+    this.clearProject();
   };
 
   clearProject = () => {
@@ -44,40 +50,42 @@ export default class App extends Component {
   };
 
   render() {
-    const { username } = this.state;
-    const { projectInfo } = this.state;
-    const { email } = this.state;
-    const { teammates } = this.state;
+//     const { username } = this.state;
+//     const { projectInfo } = this.state;
+//     const { email } = this.state;
+//     const { teammates } = this.state;
     return (
-      <section>
-        <Route
-          exact
-          path="/"
-          render={() => 
-          <Login loginUser={this.loginUser}/>}
-        />
-        <Route path="/home" component={() => <Main username={username} />} />
-        <Route
-          path="/settings"
-          component={() => (
-            <Settings
-              username={username}
-              email={email}
-              teammates={teammates}
-              projectInfo={projectInfo}
-            />
-          )}
-        />
-        <Route
-          path="/dashboard/:id"
-          component={() => <Dashboard projectInfo={projectInfo} />}
-        />
-        <Route
-          path="/dashboard/:id/detail/:id"
-          component={() => <FlowDetails />}
-        />
-        <Route path="/projects" component={() => <ProjectDropDown />} />
-      </section>
+//       <section>
+
+
+
+<main>
+  <Route exact path='/' render={() => this.state.userLoggedIn === false ? <Login loginUser={this.loginUser}/> : <Main logoutUser={this.logoutUser}/>}/>
+</main>
+
+
+//         <Route
+//           path="/settings"
+//           component={() => (
+//             <Settings
+//               username={username}
+//               email={email}
+//               teammates={teammates}
+//               projectInfo={projectInfo}
+//             />
+//           )}
+//         />
+//         <Route
+//           path="/dashboard/:id"
+//           component={() => <Dashboard projectInfo={projectInfo} />}
+//         />
+//         <Route
+//           path="/dashboard/:id/detail/:id"
+//           component={() => <FlowDetails />}
+//         />
+//         <Route path="/projects" component={() => <ProjectDropDown />} />
+//       </section>
     );
   }
 }
+
