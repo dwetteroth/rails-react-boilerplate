@@ -10,10 +10,24 @@ import ProjectDropDown from '../ProjectDropDown/ProjectDropDown';
 import Dashboard from '../Dashboard/Dashboard'
 
 class Main extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
+    this.state = {
+      project1name: this.getName(0),
+      project2name: this.getName(1),
+      project1data: this.getData(0),
+      project2data: this.getData(1)
+    }
   }
 
+  getName = (num) => {
+    console.log(this.props.projectInfo)
+    return Object.keys(this.props.projectInfo.projects[num])
+  }
+
+  getData = (num) => {
+    return Object.values(this.props.projectInfo.projects[num])
+  }
 
  
 
@@ -35,11 +49,11 @@ render () {
         openProjectDropDown={openProjectDropDown}
       />
       <section>
-        {projectSelection === false ? <ProjectSelector selectProject={selectProject} username={username} projectInfo={projectInfo}/> : null}
+        {projectSelection === false ? <ProjectSelector selectProject={selectProject} username={username} project1name={this.state.project1name} project2name={this.state.project2name}/> : null}
         {settingsSelected ? <Settings /> : null}
         {clickedProjectDropDown ? <ProjectDropDown /> : null}
-        {projectSelection === 1 ? <Dashboard /> : null}
-        {projectSelection === 2 ? <Dashboard /> : null}
+        {projectSelection === 1 ? <Dashboard projectData={projectInfo} /> : null}
+        {projectSelection === 2 ? <Dashboard projectData={projectInfo} /> : null}
       </section>
     </main>
   );
