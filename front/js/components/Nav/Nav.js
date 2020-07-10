@@ -1,18 +1,22 @@
-
-
 import React from 'react';
+import { NavLink, Link } from 'react-router-dom';
 
-const Nav = () => { 
-    return (
-    <Nav>
-    <img>IDB Logo</img>
-    <span>
-        <h3>projects</h3>
-        <h3>settings</h3>
-        <h3>logout</h3>
-    </span>
-    </Nav>
-    );
+const Nav = (props) => {
+  const { toggleSettings } = props;
+  const { logoutUser } = props;
+  const { openProjectDropDown } = props;
+  return (
+    <nav>
+      <Link to="/dashboard">home</Link>
+      <span>
+        <button onClick={openProjectDropDown}>projects</button>
+        <button onClick={toggleSettings}> settings </button>
+        <NavLink to="/" onClick={logoutUser}>
+          logout
+        </NavLink>
+      </span>
+    </nav>
+  );
 };
 
-export default Nav 
+export default Nav;

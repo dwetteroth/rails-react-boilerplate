@@ -3,41 +3,79 @@
  */
 
 import React, { Component } from 'react';
-import Route from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import Login from '../Login/Login';
 import Main from '../Main/Main';
-import Settings from '../Settings/Settings';
-import Dashboard from '../Dashboard/Dashboard';
-import FlowDetails from '../FlowDetails/FlowDetails';
+import projects from '../Data';
 
 export default class App extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
-      username: "",
-      email: "",
-      projects:[],
+      username: '',
+      email: '',
+      projectInfo: {},
       teammates: [],
-      isLoading: true,
-      networkMessage: '',
-      error: ''
-    }
+      userLoggedIn: false,
+      settingsSelected: false,
+      projectSelection: '',
+      clickedProjectDropDown: false,
+    };
   }
 
   loginUser = (username, email) => {
-    this.setState( { username })
-    this.setState( { email } )
-  }
+    this.setState({ username });
+    this.setState({ email });
+    this.setState({ userLoggedIn: true });
+    this.fetchProjects();
+  };
+
+  fetchProjects = () => {
+    this.setState({ projectInfo: projects });
+  };
+
+  logoutUser = () => {
+    this.setState({ username: '' });
+    this.setState({ email: '' });
+    this.setState({ userLoggedIn: false });
+    this.clearProject();
+  };
+
+  clearProject = () => {
+    this.setState({ projectInfo: {} });
+  };
+
+  toggleSettings = () => {
+    this.setState({ settingsSelected: !this.state.settingsSelected });
+  };
+
+  openProjectDropDown = () => {
+    this.setState({
+      clickedProjectDropDown: !this.state.clickedProjectDropDown,
+    });
+  };
 
   render() {
     return (
-      <section>
-      <Route exact path='/' render={() => <Login loginUser={this.loginUser}/>}/>
-      <Route path='/home' component={() => <Main username={this.state.username}/>}/>
-      <Route path='/settings' component={() => <Settings username={this.state.username} email={this.state.email} teammates={this.state.teammates} projects={this.state.projects}/>}/>
-      <Route path='/project/:id' component={() => <Dashboard projectInfo={this.state.projects}/>}/>
-      <Route path='/project/:id/detail/:id' component={() => <FlowDetails/>}/>
-    </section>
-    )
+      <main>
+        <Route
+          exact
+          path="/"
+          render={() =>
+            this.state.userLoggedIn === false ? (
+              <Login loginUser={this.loginUser} />
+            ) : (
+              <Main
+                settingsSelected={this.state.settingsSelected}
+                toggleSettings={this.toggleSettings}
+                logoutUser={this.logoutUser}
+                clickedProjectDropDown={this.state.clickedProjectDropDown}
+                openProjectDropDown={this.openProjectDropDown}
+              />
+            )
+          }
+        />
+      </main>
+    );
   }
 }
