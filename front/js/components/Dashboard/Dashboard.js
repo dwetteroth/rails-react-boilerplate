@@ -8,7 +8,7 @@ const Dashboard = (props) => {
     <main>
    
       <section>
-      <p>dashboard</p>
+      <p>{props.projectName}</p>
       </section>
     </main>
   );

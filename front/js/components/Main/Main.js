@@ -21,7 +21,6 @@ class Main extends Component {
   }
 
   getName = (num) => {
-    console.log(this.props.projectInfo)
     return Object.keys(this.props.projectInfo.projects[num])
   }
 
@@ -29,18 +28,12 @@ class Main extends Component {
     return Object.values(this.props.projectInfo.projects[num])
   }
 
- 
+
 
 render () {
-  const { projectInfo } = this.props;
-  const { settingsSelected } = this.props;
-  const { username } = this.props;
-  const { logoutUser } = this.props;
-  const { toggleSettings } = this.props;
-  const { openProjectDropDown } = this.props;
-  const { clickedProjectDropDown } = this.props;
-  const { selectProject } = this.props;
-  const { projectSelection } = this.props;
+  const { settingsSelected, clickedProjectDropDown, username, logoutUser, toggleSettings, openProjectDropDown, selectProject, projectSelection } = this.props;
+  const { project1data, project2name, project1name, project2data } = this.state
+
   return (
     <main>
       <Nav
@@ -49,11 +42,11 @@ render () {
         openProjectDropDown={openProjectDropDown}
       />
       <section>
-        {projectSelection === false ? <ProjectSelector selectProject={selectProject} username={username} project1name={this.state.project1name} project2name={this.state.project2name}/> : null}
+        {projectSelection === false ? <ProjectSelector selectProject={selectProject} username={username} project1name={project1name} project2name={project2name}/> : null}
         {settingsSelected ? <Settings /> : null}
-        {clickedProjectDropDown ? <ProjectDropDown /> : null}
-        {projectSelection === 1 ? <Dashboard projectData={projectInfo} /> : null}
-        {projectSelection === 2 ? <Dashboard projectData={projectInfo} /> : null}
+        {clickedProjectDropDown ? <ProjectDropDown selectProject={selectProject} project1name={project1name} project2name={project2name}/> : null}
+        {projectSelection === 1 ? <Dashboard projectData={project1data} projectName={project1name}/> : null}
+        {projectSelection === 2 ? <Dashboard projectData={project2data} projectName={project2name}/> : null}
       </section>
     </main>
   );
