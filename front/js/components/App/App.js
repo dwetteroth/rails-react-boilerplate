@@ -8,7 +8,6 @@ import Login from '../Login/Login';
 import Main from '../Main/Main';
 import projects from '../Data';
 
-
 export default class App extends Component {
   constructor() {
     super();
@@ -24,7 +23,7 @@ export default class App extends Component {
     };
   }
 
-  loginUser = (username, email) => {  
+  loginUser = (username, email) => {
     this.setState({ username });
     this.setState({ email });
     this.setState({ userLoggedIn: true });
@@ -51,8 +50,8 @@ export default class App extends Component {
   };
 
   selectProject = (projectNum) => {
-    this.setState({ projectSelection: projectNum})
-  }
+    this.setState({ projectSelection: projectNum });
+  };
 
   openProjectDropDown = () => {
     this.setState({
@@ -61,7 +60,7 @@ export default class App extends Component {
   };
 
   render() {
-   return (
+    return (
       <main>
         <Route
           exact
